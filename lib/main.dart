@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,15 +37,18 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/app-icon.png'),
+                    Center(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 30,
+                        backgroundImage: AssetImage('assets/app-icon.png'),
+                      ),
                     ),
                     SizedBox(height: 20),
                     Text('Food for\nEveryone',
                         style: TextStyle(
                           fontFamily: 'JS',
+                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontSize: 46,
                         )),
@@ -94,6 +98,7 @@ class WelcomeScreen extends StatelessWidget {
 /// onboard screen
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
