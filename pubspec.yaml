@@ -64,6 +64,8 @@ flutter:
    - assets/app-icon.png
    - assets/avatar-two.png
    - assets/avatar-one.png
+   - assets/cart.png
+   - assets/drawer.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -77,10 +79,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-   - family: JS
+   - family: GS
      fonts:
-      - asset: fonts/js-bold.ttf
-      - asset: fonts/js-regular.ttf
+      - asset: fonts/gs-regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
