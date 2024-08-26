@@ -66,6 +66,10 @@ flutter:
    - assets/avatar-one.png
    - assets/cart.png
    - assets/drawer.png
+   - assets/food-one.png
+   - assets/food-two.png
+   - assets/food-third.png
+   - assets/food-four.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

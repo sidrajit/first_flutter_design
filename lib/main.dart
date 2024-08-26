@@ -200,7 +200,8 @@ class OnboardScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomeScreen()));
+                                      builder: (context) =>
+                                          const HomeScreen()));
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.white,
@@ -240,6 +241,25 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TabController? tabController;
 
+  List<FoodModel> foodModel = [
+    FoodModel(
+        foodName: 'Veggie Tomato Mix',
+        foodImage: 'food-one.png',
+        foodPrice: '1,900'),
+    FoodModel(
+        foodName: 'Fried Chicken',
+        foodImage: 'food-two.png',
+        foodPrice: '2,500'),
+    FoodModel(
+        foodName: 'Fresh Egg Fish',
+        foodImage: 'food-third.png',
+        foodPrice: '2,100'),
+    FoodModel(
+        foodName: 'Egg Cucumber',
+        foodImage: 'food-four.png',
+        foodPrice: '1,500'),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -248,11 +268,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    void snackBar() {
-      const SnackBar(
-        content: Text('Yay! A SnackBar!'),
-      );
-    }
     return Scaffold(
       backgroundColor: const Color(0xFFF2F2F2),
       body: SingleChildScrollView(
@@ -307,15 +322,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     keyboardType: TextInputType.text,
                   ),
                   const SizedBox(height: 30),
-                  // TabBarView(
-                  //   children: [
-                  //     Text("Tab1"),
-                  //     Text("Tab2"),
-                  //     Text("Tab3"),
-                  //     Text("Tab4"),
-                  //   ],
-                  //   controller: tabController,
-                  // )
                 ],
               ),
             ),
@@ -340,7 +346,40 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         Text('Sauce',
                             style: TextStyle(fontSize: 18, fontFamily: 'GS')),
                       ])),
-            )
+            ),
+            const SizedBox(height: 40),
+            SizedBox(
+                height: 300,
+                width: double.infinity,
+                child: ListView.builder(
+                    itemCount: foodModel.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => SizedBox(
+                        height: 300,
+                        width: 210,
+                        child: Stack(
+                          children: [
+                            const Positioned(
+                                top: 40,
+                                child: SizedBox(
+                                  height: 250,
+                                  width: 200,
+                                  child: Card(
+                                    color: Colors.white,
+                                    shadowColor: Colors.grey,
+                                    elevation: 5,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                  ),
+                                )),
+                            Image.asset(
+                              'assets/${foodModel[index].foodImage}',
+                              height: 200,
+                              width: 200,
+                            ),
+                          ],
+                        ))))
           ],
         ),
       ),
@@ -365,4 +404,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Ticker createTicker(TickerCallback onTick) {
     return Ticker(onTick);
   }
+}
+
+class FoodModel {
+  String foodName;
+  String foodImage;
+  String foodPrice;
+
+  FoodModel(
+      {required this.foodName,
+      required this.foodImage,
+      required this.foodPrice});
 }
