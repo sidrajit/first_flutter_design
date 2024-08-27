@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+class FoodModel {
+  String foodName;
+  String foodImage;
+  String foodPrice;
+
+  FoodModel(
+      {required this.foodName,
+      required this.foodImage,
+      required this.foodPrice});
+}
+
 void main() {
   runApp(const MyApp());
 }
@@ -243,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   List<FoodModel> foodModel = [
     FoodModel(
-        foodName: 'Veggie Tomato Mix',
+        foodName: 'Veggie Tomato\nMix',
         foodImage: 'food-one.png',
         foodPrice: '1,900'),
     FoodModel(
@@ -347,11 +358,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             style: TextStyle(fontSize: 18, fontFamily: 'GS')),
                       ])),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
             SizedBox(
                 height: 300,
                 width: double.infinity,
                 child: ListView.builder(
+                    padding: const EdgeInsets.only(left: 20),
                     itemCount: foodModel.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => SizedBox(
@@ -359,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         width: 210,
                         child: Stack(
                           children: [
-                            const Positioned(
+                            Positioned(
                                 top: 40,
                                 child: SizedBox(
                                   height: 250,
@@ -368,9 +380,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     color: Colors.white,
                                     shadowColor: Colors.grey,
                                     elevation: 5,
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(20))),
+                                    child: Center(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            foodModel[index].foodName,
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black,
+                                                fontFamily: 'GS',
+                                                fontWeight: FontWeight.bold),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 )),
                             Image.asset(
@@ -404,15 +432,4 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Ticker createTicker(TickerCallback onTick) {
     return Ticker(onTick);
   }
-}
-
-class FoodModel {
-  String foodName;
-  String foodImage;
-  String foodPrice;
-
-  FoodModel(
-      {required this.foodName,
-      required this.foodImage,
-      required this.foodPrice});
 }
